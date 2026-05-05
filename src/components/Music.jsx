@@ -43,7 +43,7 @@ export default function Music() {
             <div
               key={i}
               className="wave-bar"
-              style={{ '--peak': `${peak}px`, animationDelay: `${i * 0.08}s` }}
+              style={{ '--peak': `${peak}px`, animationDelay: `${i * 0.08}s`, animationPlayState: managerState.playing ? 'running' : 'paused' }}
             />
           ))}
         </div>
