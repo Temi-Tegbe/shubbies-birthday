@@ -55,11 +55,11 @@ export default function Landing() {
         <a href="#journey" className="scroll-btn">Begin Our Story →</a>
       </div>
 
-      <div className="music-note">
+      {/* <div className="music-note">
         <span>♪</span>
         <em>Ice Cream Man — Raye</em>
         <span>♪</span>
-      </div>
+      </div> */}
     </section>
   );
 }
