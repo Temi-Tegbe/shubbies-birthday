@@ -1,4 +1,5 @@
-import Landing    from './components/Landing'
+import Landing        from './components/Landing'
+import FloatingPlayer from './components/FloatingPlayer'
 import Journey    from './components/Journey'
 import Passions   from './components/Passions'
 import Reasons    from './components/Reasons'
@@ -13,6 +14,7 @@ export default function App() {
   return (
     <>
       <NavDots />
+      <FloatingPlayer />
       <Landing />
       <Journey />
       <Passions />

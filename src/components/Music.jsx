@@ -1,4 +1,5 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { playTrack, pause, subscribe, getState } from '../audioManager';
 
 const songs = [
   { title: 'Ice Cream Man',      artist: 'Raye',          fav: true,  src: '/images/Raye - Ice Cream Man _ Hottest Record Live.mp3' },
@@ -11,24 +12,22 @@ const songs = [
 const wavePeaks = [22, 40, 32, 60, 45, 68, 50, 65, 72, 58, 62, 44, 50, 32, 24];
 
 export default function Music() {
-  const [playing, setPlaying] = useState(null);
-  const audioRef = useRef(null);
+  const [managerState, setManagerState] = useState(getState());
 
-  const toggle = (src) => {
-    if (!src) return;
-    if (playing === src) {
-      audioRef.current.pause();
-      setPlaying(null);
+  useEffect(() => subscribe(setManagerState), []);
+
+  const playing = managerState.playing ? managerState.audio?.src : null;
+
+  const toggle = (s) => {
+    if (!s) return;
+    const fullSrc = new URL(s, window.location.href).href;
+    if (playing === fullSrc && managerState.playing) {
+      pause();
     } else {
-      if (audioRef.current) audioRef.current.pause();
-      audioRef.current = new Audio(src);
-      audioRef.current.play();
-      audioRef.current.onended = () => setPlaying(null);
-      setPlaying(src);
+      const song = songs.find(x => x.src === s);
+      playTrack(s, song.title, song.artist);
     }
   };
-
-  useEffect(() => () => audioRef.current?.pause(), []);
 
   return (
     <section id="music" className="music">
@@ -51,7 +50,7 @@ export default function Music() {
 
         <div className="playlist">
           {songs.map((s, i) => (
-            <div key={i} className={`song-row${playing === s.src ? ' song-playing' : ''}`}>
+            <div key={i} className={`song-row${managerState.playing && managerState.title === s.title ? ' song-playing' : ''}`}>
               <div className="song-num">{String(i + 1).padStart(2, '0')}</div>
               <div className="song-info">
                 <h4>{s.title}</h4>
@@ -59,8 +58,8 @@ export default function Music() {
               </div>
               {s.fav && <span className="fav-tag">Her #1 Fav ♡</span>}
               {s.src && (
-                <button className="play-btn" onClick={() => toggle(s.src)} aria-label={playing === s.src ? 'Pause' : 'Play'}>
-                  {playing === s.src ? '⏸' : '▶'}
+                <button className="play-btn" onClick={() => toggle(s.src)} aria-label={managerState.playing && managerState.title === s.title ? 'Pause' : 'Play'}>
+                  {managerState.playing && managerState.title === s.title ? '⏸' : '▶'}
                 </button>
               )}
             </div>

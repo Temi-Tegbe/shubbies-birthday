@@ -1,17 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
+import { playTrack } from '../audioManager';
 
 export default function Landing() {
   const [opened, setOpened] = useState(false);
   const [petals, setPetals] = useState([]);
-  const [muted, setMuted] = useState(false);
-  const audioRef = useRef(null);
-
-  const toggleMute = () => {
-    setMuted(m => {
-      if (audioRef.current) audioRef.current.muted = !m;
-      return !m;
-    });
-  };
 
   useEffect(() => {
     setPetals(
@@ -43,7 +35,7 @@ export default function Landing() {
         ))}
       </div>
 
-      <div className="envelope-wrapper" onClick={() => { if (!opened) { setOpened(true); audioRef.current?.play(); } }}>
+      <div className="envelope-wrapper" onClick={() => { if (!opened) { setOpened(true); playTrack('/images/Raye - Ice Cream Man _ Hottest Record Live.mp3', 'Ice Cream Man', 'Raye'); } }}>
         <div className="envelope">
           <div className="envelope-body">
             <div className={`envelope-letter${opened ? ' revealed' : ''}`}>
@@ -68,17 +60,7 @@ export default function Landing() {
         <span>♪</span>
         <em>Ice Cream Man — Raye</em>
         <span>♪</span>
-        <button className="mute-btn" onClick={toggleMute} aria-label="Toggle mute">
-          {muted ? '🔇' : '🔊'}
-        </button>
       </div>
-
-      <audio
-        ref={audioRef}
-        src="/images/Raye - Ice Cream Man _ Hottest Record Live.mp3"
-        loop
-        style={{ display: 'none' }}
-      />
     </section>
   );
 }
