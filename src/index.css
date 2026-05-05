@@ -274,6 +274,18 @@ body {
   white-space: nowrap;
 }
 
+.mute-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0;
+  line-height: 1;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+.mute-btn:hover { opacity: 1; }
+
 /* ===================== JOURNEY ===================== */
 
 .journey { padding: 90px 20px; background: var(--cream); }
@@ -589,6 +601,30 @@ body {
   box-shadow: 0 4px 18px rgba(123, 26, 46, 0.11);
 }
 
+.song-playing {
+  border-left-color: var(--lilac) !important;
+  background: var(--lilac-pale) !important;
+}
+
+.play-btn {
+  margin-left: auto;
+  background: var(--maroon);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+.play-btn:hover { background: var(--lilac); transform: scale(1.1); }
+.song-playing .play-btn { background: var(--lilac); }
+
 .song-num {
   font-family: 'Playfair Display', serif;
   font-size: 1.4rem;
@@ -644,8 +680,7 @@ body {
 
 .collage-cell:hover { transform: scale(1.02); z-index: 1; }
 
-.collage-cell:nth-child(1) { grid-column: span 2; height: 683px; }
-.collage-cell:nth-child(n+2) { height: 360px; }
+.collage-grid { grid-auto-rows: 360px; }
 .collage-cell:nth-child(6) { grid-column: span 2; }
 
 .collage-img {
@@ -1039,6 +1074,16 @@ body {
   background: #fff;
   transform: scale(1.05);
   box-shadow: 0 8px 40px rgba(196, 168, 212, 0.55);
+}
+
+.site-credit {
+  position: absolute;
+  bottom: 16px;
+  right: 20px;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.04em;
+  font-family: 'Nunito', sans-serif;
 }
 
 /* ===================== NAV DOTS ===================== */

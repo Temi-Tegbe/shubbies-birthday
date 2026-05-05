@@ -1,5 +1,5 @@
 const photos = [
-  { src: "/images/Shubbie's 25th/IMG_3008.jpg",    alt: "Bridge Adventure",    span: 2 },
+  { src: "/images/Shubbie's 25th/IMG_3008.jpg",    alt: "Bridge Adventure",    span: 2, rowSpan: 2 },
   { src: "/images/Shubbie's 25th/IMG_9400.jpg",    alt: "Night Out Glam"           },
   { src: "/images/Shubbie's 25th/IMG_3019.jpg",    alt: "Nature Smile"             },
   { src: "/images/Shubbie's 25th/IMG_3712.jpg",    alt: "Impact Centre"            },
@@ -20,7 +20,7 @@ export default function Photos() {
 
       <div className="collage-grid">
         {photos.map((p, i) => (
-          <div key={i} className="collage-cell" style={p.span ? { gridColumn: `span ${p.span}` } : {}}>
+          <div key={i} className="collage-cell" style={{ ...(p.span && { gridColumn: `span ${p.span}` }), ...(p.rowSpan && { gridRow: `span ${p.rowSpan}` }) }}>
             <img src={p.src} alt={p.alt} className="collage-img" />
           </div>
         ))}

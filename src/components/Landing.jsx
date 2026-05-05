@@ -1,8 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Landing() {
   const [opened, setOpened] = useState(false);
   const [petals, setPetals] = useState([]);
+  const [muted, setMuted] = useState(false);
+  const audioRef = useRef(null);
+
+  const toggleMute = () => {
+    setMuted(m => {
+      if (audioRef.current) audioRef.current.muted = !m;
+      return !m;
+    });
+  };
 
   useEffect(() => {
     setPetals(
@@ -55,11 +64,22 @@ export default function Landing() {
         <a href="#journey" className="scroll-btn">Begin Our Story →</a>
       </div>
 
-      {/* <div className="music-note">
+      <div className="music-note">
         <span>♪</span>
         <em>Ice Cream Man — Raye</em>
         <span>♪</span>
-      </div> */}
+        <button className="mute-btn" onClick={toggleMute} aria-label="Toggle mute">
+          {muted ? '🔇' : '🔊'}
+        </button>
+      </div>
+
+      <audio
+        ref={audioRef}
+        src="/images/Raye - Ice Cream Man _ Hottest Record Live.mp3"
+        autoPlay
+        loop
+        style={{ display: 'none' }}
+      />
     </section>
   );
 }

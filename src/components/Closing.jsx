@@ -17,6 +17,8 @@ export default function Closing() {
       </div>
 
       <a href="#landing" className="forever-btn">Here's to Forever 💜</a>
+
+      <p className="site-credit">built by Temiloluwa Tegbe</p>
     </section>
   );
 }
