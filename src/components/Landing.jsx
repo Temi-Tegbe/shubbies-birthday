@@ -43,7 +43,7 @@ export default function Landing() {
         ))}
       </div>
 
-      <div className="envelope-wrapper" onClick={() => !opened && setOpened(true)}>
+      <div className="envelope-wrapper" onClick={() => { if (!opened) { setOpened(true); audioRef.current?.play(); } }}>
         <div className="envelope">
           <div className="envelope-body">
             <div className={`envelope-letter${opened ? ' revealed' : ''}`}>
@@ -76,7 +76,6 @@ export default function Landing() {
       <audio
         ref={audioRef}
         src="/images/Raye - Ice Cream Man _ Hottest Record Live.mp3"
-        autoPlay
         loop
         style={{ display: 'none' }}
       />
