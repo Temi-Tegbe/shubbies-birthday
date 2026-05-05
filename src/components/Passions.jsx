@@ -28,8 +28,11 @@ export default function Passions() {
       <div className="passions-grid">
         {tiles.map((t, i) => (
           <div key={i} className="passion-tile">
-            <div className="tile-icon">{t.icon}</div>
-            <div className="tile-title">{t.title}</div>
+            <div className="tile-front">
+              <div className="tile-icon">{t.icon}</div>
+              <div className="tile-title">{t.title}</div>
+              <span className="tile-hint">hover ✦</span>
+            </div>
             <div className="tile-anecdote">{t.anecdote}</div>
           </div>
         ))}

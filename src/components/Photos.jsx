@@ -1,12 +1,12 @@
 const photos = [
-  { src: "/images/Shubbie's 25th/IMG_3008.jpg",    alt: "Bridge Adventure",    span: 2, rowSpan: 2 },
-  { src: "/images/Shubbie's 25th/IMG_9400.jpg",    alt: "Night Out Glam"           },
-  { src: "/images/Shubbie's 25th/IMG_3019.jpg",    alt: "Nature Smile"             },
-  { src: "/images/Shubbie's 25th/IMG_3712.jpg",    alt: "Impact Centre"            },
-  { src: "/images/Shubbie's 25th/IMG_9850.jpg",    alt: "Hard Rock Cafe"           },
-  { src: "/images/Shubbie's 25th/bd9c6272-2c32-452c-8cca-6a9adad329a2.jpg", alt: "Arcade Fun", span: 2 },
-  { src: "/images/Shubbie's 25th/IMG_4005.jpg",    alt: "Black Outfit"             },
-  { src: "/images/Shubbie's 25th/IMG_5091.jpg",    alt: "Tonight's Vibe"           },
+  { src: "/images/IMG_3008.jpg",    alt: "Bridge Adventure",    span: 2, rowSpan: 2 },
+  { src: "/images/IMG_9400.jpg",    alt: "Night Out Glam"           },
+  { src: "/images/IMG_3019.jpg",    alt: "Nature Smile"             },
+  { src: "/images/IMG_3712.jpg",    alt: "Impact Centre"            },
+  { src: "/images/IMG_9850.jpg",    alt: "Hard Rock Cafe"           },
+  { src: "/images/bd9c6272-2c32-452c-8cca-6a9adad329a2.jpg", alt: "Arcade Fun", span: 2 },
+  { src: "/images/IMG_4005.jpg",    alt: "Black Outfit"             },
+  { src: "/images/IMG_5091.jpg",    alt: "Tonight's Vibe"           },
 ];
 
 export default function Photos() {
